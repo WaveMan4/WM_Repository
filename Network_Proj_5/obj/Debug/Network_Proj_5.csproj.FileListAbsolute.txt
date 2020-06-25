@@ -1,0 +1,19 @@
+C:\Users\Gilles R. Kepnang\Documents\Visual Studio 2008\Projects\Network_Proj_5\Network_Proj_5\bin\Debug\Network_Proj_5.exe.config
+C:\Users\Gilles R. Kepnang\Documents\Visual Studio 2008\Projects\Network_Proj_5\Network_Proj_5\bin\Debug\Network_Proj_5.exe
+C:\Users\Gilles R. Kepnang\Documents\Visual Studio 2008\Projects\Network_Proj_5\Network_Proj_5\bin\Debug\Network_Proj_5.pdb
+C:\Users\Gilles R. Kepnang\Documents\Visual Studio 2008\Projects\Network_Proj_5\Network_Proj_5\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Gilles R. Kepnang\Documents\Visual Studio 2008\Projects\Network_Proj_5\Network_Proj_5\obj\Debug\Network_Proj_5.Properties.Resources.resources
+C:\Users\Gilles R. Kepnang\Documents\Visual Studio 2008\Projects\Network_Proj_5\Network_Proj_5\obj\Debug\Network_Proj_5.WeatherAppForm.resources
+C:\Users\Gilles R. Kepnang\Documents\Visual Studio 2008\Projects\Network_Proj_5\Network_Proj_5\obj\Debug\Network_Proj_5.csproj.GenerateResource.Cache
+C:\Users\Gilles R. Kepnang\Documents\Visual Studio 2008\Projects\Network_Proj_5\Network_Proj_5\obj\Debug\Network_Proj_5.exe
+C:\Users\Gilles R. Kepnang\Documents\Visual Studio 2008\Projects\Network_Proj_5\Network_Proj_5\obj\Debug\Network_Proj_5.pdb
+C:\Users\Gilles\Desktop\Upwork\Projects - C#\Network_Proj_5\Network_Proj_5\Network_Proj_5\bin\Debug\Network_Proj_5.exe.config
+C:\Users\Gilles\Desktop\Upwork\Projects - C#\Network_Proj_5\Network_Proj_5\Network_Proj_5\bin\Debug\Network_Proj_5.exe
+C:\Users\Gilles\Desktop\Upwork\Projects - C#\Network_Proj_5\Network_Proj_5\Network_Proj_5\bin\Debug\Network_Proj_5.pdb
+C:\Users\Gilles\Desktop\Upwork\Projects - C#\Network_Proj_5\Network_Proj_5\Network_Proj_5\obj\Debug\Network_Proj_5.csprojAssemblyReference.cache
+C:\Users\Gilles\Desktop\Upwork\Projects - C#\Network_Proj_5\Network_Proj_5\Network_Proj_5\obj\Debug\Network_Proj_5.Properties.Resources.resources
+C:\Users\Gilles\Desktop\Upwork\Projects - C#\Network_Proj_5\Network_Proj_5\Network_Proj_5\obj\Debug\Network_Proj_5.WeatherAppForm.resources
+C:\Users\Gilles\Desktop\Upwork\Projects - C#\Network_Proj_5\Network_Proj_5\Network_Proj_5\obj\Debug\Network_Proj_5.csproj.GenerateResource.cache
+C:\Users\Gilles\Desktop\Upwork\Projects - C#\Network_Proj_5\Network_Proj_5\Network_Proj_5\obj\Debug\Network_Proj_5.csproj.CoreCompileInputs.cache
+C:\Users\Gilles\Desktop\Upwork\Projects - C#\Network_Proj_5\Network_Proj_5\Network_Proj_5\obj\Debug\Network_Proj_5.exe
+C:\Users\Gilles\Desktop\Upwork\Projects - C#\Network_Proj_5\Network_Proj_5\Network_Proj_5\obj\Debug\Network_Proj_5.pdb
