@@ -1,3 +1,6 @@
+### Summary: Augmented Supervised-Learning Models
+### Author: Gilles Kepnang
+
 ### EN605.795.8VL.SP20
 
 # ----- Importing libraries -----
@@ -158,27 +161,6 @@ def train_test_accuracy(_X_tr, _X_ts, _y_tr, _y_ts):
     print("F1 score", f1_score(_y_ts, y_pred))
     print("Confusion Matrix:", confusion_matrix(_y_ts, y_pred))
 
-    # Takes too long to run?
-    # sv = svm.SVC(kernel='linear') # Create a new SVM Classifier with Linear kernel
-    # model = sv.fit(_X_tr, _y_tr) # Train the SVM Classifier on training data
-    # y_pred = sv.predict(_X_ts) # Test SVM Classifier on testing data
-    # print("For SVM Classifier: ")
-    # print("Accuracy: ", accuracy_score(_y_ts, y_pred)) # Print accuracy of SVM classifier
-    # print("Precision:", precision_score(y_test, y_pred))
-    # print("Recall:", recall_score(y_test, y_pred))
-    # print("F1 score", f1_score(y_test, y_pred))
-    # print("Confusion Matrix:", confusion_matrix(y_test, y_pred))
-
-    #knn = KNeighborsClassifier(n_neighbors=5) # Create a new K Nearest Neighbor Classifier
-    #model = knn.fit(_X_tr, _y_tr)
-    #y_pred = knn.predict(_X_ts)
-    #print("For K Nearest Neighbors Classifier: ")
-    #print("Accuracy: ", accuracy_score(_y_ts, y_pred)) # Print accuracy of knn classifier
-    #print("Precision:", precision_score(_y_ts, y_pred))
-    #print("Recall:", recall_score(_y_ts, y_pred))
-    #print("F1 score", f1_score(_y_ts, y_pred))
-    #print("Confusion Matrix:", confusion_matrix(_y_ts, y_pred))
-
     gbc = GradientBoostingClassifier(n_estimators=100, learning_rate=1.0, max_depth=1)
     gbc.fit(_X_tr, _y_tr)
     y_pred = gbc.predict(_X_ts)
@@ -188,10 +170,6 @@ def train_test_accuracy(_X_tr, _X_ts, _y_tr, _y_ts):
     print("Recall:", recall_score(_y_ts, y_pred))
     print("F1 score", f1_score(_y_ts, y_pred))
     print("Confusion Matrix:", confusion_matrix(_y_ts, y_pred))
-    #print("Precision:", precision_score(y_test, y_pred))
-    #print("Recall:", recall_score(y_test, y_pred))
-    #print("F1 score", f1_score(y_test, y_pred))
-    #print("Confusion Matrix:", confusion_matrix(y_test, y_pred))
     # n_estimators: It controls the number of weak learners.
     # learning_rate:Controls the contribution of weak learners in the final combination. There is a trade-off between learning_rate and n_estimators.
     # max_depth: maximum depth of the individual regression estimators. The maximum depth limits the number of nodes in the tree. Tune this parameter for best performance; the best value depends on the interaction of the input variables
@@ -235,32 +213,8 @@ def updateDF(idx, orig, dest, _df):
     return _df
 
 def create_capstone_dataset(connLogLabeled_DF):
-        # ----- Output current datafrom to csv file (conn_log_dataframe.csv)
-    #connLogLabeled_DF.to_csv (r'C:\Users\Gilles\PycharmProjects\Capstone\connLogDerived_8_42_mod.csv', index = False, header=True)
+    # ----- Output current datafrom to csv file (conn_log_dataframe.csv)
 
-    # ----- Preprocess and clean the data -----
-    #preprocess_df(connLogLabeled_DF) # start to preprocess conn log df
-
-    #print("--------------------------------")
-    #print("Labels in the original dataset: ")
-    #print (connLogLabeled_DF['tunnel_parents   label   detailed-label'].cat.categories) # Check the label (i.e. dependent variable) categories
-
-    #Note: From the above step, we see there are 4 labels (multi-class) within this dataset: benign, malicious C&C, malicious DDoS, malicious PartOfAHorizontalPortScan
-    #We can create an additional column with binary labels (i.e. 'benign' vs 'malicious') to have the flexibility to consider this as a binary classification problem as well
-    #connLogLabeled_DF.insert(0, 'binary_label', True) # add new column to the end of the dataset for the binary label (True = malicious, False = benign)
-
-    #for index, row in connLogLabeled_DF.iterrows(): # iterate through dataset and populate binary label as malicious or benign
-        #current_mclassLabel = row['tunnel_parents   label   detailed-label']
-    #    current_mclassLabel = row['label']
-    #    if (type(current_mclassLabel) is float and math.isnan(current_mclassLabel)):
-    #        current_mclassLabel = row['tunnel_parents']
-    #        if ('-' in current_mclassLabel):
-    #            connLogLabeled_DF.at[index, 'binary_label'] = False
-    #        else:
-    #            connLogLabeled_DF.drop(index, inplace=True)
-    #    else:
-    #        if ('Benign' in current_mclassLabel or 'benign' in current_mclassLabel):
-    #            connLogLabeled_DF.at[index, 'binary_label'] = False
 
     # Create inter-packet spacing feature
     connLogLabeled_DF.insert(21, 'packet_spacing', 0) # add new column to the end of the dataset for spacing
@@ -284,77 +238,6 @@ def create_capstone_dataset(connLogLabeled_DF):
         if (connLogLabeled_DF.shape[0] - index) > 1 and stored_pairs.count([row['id_orig_h'], row['id_resp_h']]) < 1:
             connLogLabeled_DF = updateDF(index, row['id_orig_h'], row['id_resp_h'], connLogLabeled_DF)
             stored_pairs.append([row['id_orig_h'], row['id_resp_h']])
-
-    ################################################################################
-    ##### One-hot encode the categorical (i.e. non-numerical) features  ############
-    ################################################################################
-
-    # One-hot encode the nominal/categorical columns we'll be using as features
-    #connLogLabeled_DF = encode_onehot(connLogLabeled_DF, 'proto') # one-hot encode 'proto' feature
-    #cols = []
-    #for f in list(connLogLabeled_DF.columns.values):
-    #   if 'proto' in f:
-    #        cols += [f]
-
-    #connLogLabeled_DF = encode_onehot(connLogLabeled_DF, 'history') # one-hot encode 'd.orig_h' feature
-    #cols = []
-    #for f in list(connLogLabeled_DF.columns.values):
-    #    if 'history' in f:
-    #        cols += [f]
-
-    #connLogLabeled_DF = encode_onehot(connLogLabeled_DF, 'conn_state') # one-hot encode 'd.orig_h' feature
-    #cols = []
-    #for f in list(connLogLabeled_DF.columns.values):
-    #    if 'conn_state' in f:
-    #        cols += [f]
-
-    # ----- Set the features the model will use by dropping the ones we don't want to use -----
-    #features_to_drop = ['ts', 'uid', 'id.orig_h', 'id.resp_h', 'service', 'duration', 'orig_bytes', 'resp_bytes', 'local_orig', 'local_resp', 'tunnel_parents   label   detailed-label']
-
-    # ----- Features to Keep
-    # 'id.orig_p', 'id.resp_p', 'missed_bytes', 'orig_pkts', 'resp_pkts', 'resp_ip_bytes'
-
-    #Features to Drop
-    #for feature in features_to_drop:
-    #   if (feature in connLogLabeled_DF.columns):
-    #       connLogLabeled_DF = connLogLabeled_DF.drop(feature, axis=1)
-
-    #connLogLabeled_DF = connLogLabeled_DF.apply(pd.to_numeric) # ensure all features being used are numeric
-
-    # sanity check
-    #pd.set_option('display.max_columns', None)
-    #pd.set_option('display.max_rows', None)
-
-            ##### Run models and print results #####
-    # ----- Create X and Y vectors -----
-    #X = connLogLabeled_DF.loc[:, connLogLabeled_DF.columns != 'binary_label'].values # X can contains all features minus the features that were dropped minus the label
-    #y = connLogLabeled_DF.loc[:, connLogLabeled_DF.columns == 'binary_label'].values.ravel() # Y contains just the binary label
-
-    # ----- Print bar graph showing benign/malicious makeup of dataset that was read in -----#
-    #count = 0
-    #malicious_count = 0
-    #benign_count = 0
-    #for label in y:
-    #   if (label == False):
-    #       benign_count += 1
-    #   else:
-    #       malicious_count += 1
-
-    #print("--------------------------------")
-    #print("percent of data points labeled benign = ", (benign_count/len(y)) )
-    #print("number of benign pts: ", benign_count)
-    #print("percent of data points labeled malicious = ", (1-(benign_count/len(y))) )
-    #print("--------------------------------")
-
-    #label = ['Benign', 'Malicious']
-    #counts = [benign_count, malicious_count]
-    #index = np.arange(len(label))
-    #plt.bar(index, counts)
-    #plt.xlabel('Label', fontsize=12)
-    #plt.ylabel('# Data Points', fontsize=12)
-    #plt.xticks(index, label, fontsize=10)
-    #plt.title('Benign vs Malicious Data Points in Dataset')
-    #plt.savefig('benignVsmaliciousCount_unbalancedDataset.png')
 
     return connLogLabeled_DF
 
@@ -394,76 +277,6 @@ def create_capstone_benign_dataset(connLogLabeled_DF):
             connLogLabeled_DF = updateDF(index, row['id.orig_h'], row['id.resp_h'], connLogLabeled_DF)
             stored_pairs.append([row['id.orig_h'], row['id.resp_h']])
 
-    ################################################################################
-    ##### One-hot encode the categorical (i.e. non-numerical) features  ############
-    ################################################################################
-
-    # One-hot encode the nominal/categorical columns we'll be using as features
-    #connLogLabeled_DF = encode_onehot(connLogLabeled_DF, 'proto') # one-hot encode 'proto' feature
-    #cols = []
-    #for f in list(connLogLabeled_DF.columns.values):
-    #   if 'proto' in f:
-    #        cols += [f]
-
-    #connLogLabeled_DF = encode_onehot(connLogLabeled_DF, 'history') # one-hot encode 'd.orig_h' feature
-    #cols = []
-    #for f in list(connLogLabeled_DF.columns.values):
-    #    if 'history' in f:
-    #        cols += [f]
-
-    #connLogLabeled_DF = encode_onehot(connLogLabeled_DF, 'conn_state') # one-hot encode 'd.orig_h' feature
-    #cols = []
-    #for f in list(connLogLabeled_DF.columns.values):
-    #    if 'conn_state' in f:
-    #        cols += [f]
-
-    # ----- Set the features the model will use by dropping the ones we don't want to use -----
-    #features_to_drop = ['ts', 'uid', 'id.orig_h', 'id.resp_h', 'service', 'duration', 'orig_bytes', 'resp_bytes', 'local_orig', 'local_resp', 'tunnel_parents']
-
-    # ----- Features to Keep
-    # 'id.orig_p', 'id.resp_p', 'missed_bytes', 'orig_pkts', 'resp_pkts', 'resp_ip_bytes'
-
-    #Features to Drop
-    #for feature in features_to_drop:
-    #   if (feature in connLogLabeled_DF.columns):
-    #       connLogLabeled_DF = connLogLabeled_DF.drop(feature, axis=1)
-
-    #connLogLabeled_DF = connLogLabeled_DF.apply(pd.to_numeric) # ensure all features being used are numeric
-
-    # sanity check
-    #pd.set_option('display.max_columns', None)
-    #pd.set_option('display.max_rows', None)
-
-            ##### Run models and print results #####
-    # ----- Create X and Y vectors -----
-    #X = connLogLabeled_DF.loc[:, connLogLabeled_DF.columns != 'binary_label'].values # X can contains all features minus the features that were dropped minus the label
-    #y = connLogLabeled_DF.loc[:, connLogLabeled_DF.columns == 'binary_label'].values.ravel() # Y contains just the binary label
-
-    # ----- Print bar graph showing benign/malicious makeup of dataset that was read in -----#
-    #count = 0
-    #malicious_count = 0
-    #benign_count = 0
-    #for label in y:
-    #   if (label == False):
-    #       benign_count += 1
-    #   else:
-    #       malicious_count += 1
-
-    #print("--------------------------------")
-    #print("percent of data points labeled benign = ", (benign_count/len(y)) )
-    #print("number of benign pts: ", benign_count)
-    #print("percent of data points labeled malicious = ", (1-(benign_count/len(y))) )
-    #print("--------------------------------")
-
-    #label = ['Benign', 'Malicious']
-    #counts = [benign_count, malicious_count]
-    #index = np.arange(len(label))
-    #plt.bar(index, counts)
-    #plt.xlabel('Label', fontsize=12)
-    #plt.ylabel('# Data Points', fontsize=12)
-    #plt.xticks(index, label, fontsize=10)
-    #plt.title('Benign vs Malicious Data Points in Dataset')
-    #plt.savefig('benignVsmaliciousCount_unbalancedDataset.png')
 
     return connLogLabeled_DF
 
@@ -473,59 +286,5 @@ if __name__ == "__main__":
     connLogLabeled_DF_1 = create_capstone_dataset(connLogLabeled_DF_1)
     connLogLabeled_DF_1.to_csv(r'C:\Users\Gilles\PycharmProjects\Capstone\Capstone_3M_v1.csv', index = False, header=True)
 
-    #print(connLogLabeled_DF.head())
 
-    # ----- Calculate correlation of each feature to the binary label (i.e. the target variable) and visualize results -----
-    # Keep the target variable in the X
-    #X = connLogLabeled_DF.values
-    #N, M = X.shape
-
-    # Average of each feature, i.e. sample mean
-    #Xavg = np.zeros(M)
-    #for i in range(M):
-    #    Xavg[i] = np.sum(X[:,i]) / N
-
-    # Stdev of each feature, i.e. sample standard deviation
-    #Xvar = np.zeros(M)
-    #for i in range(M):
-    #    Xvar[i] = np.sqrt(np.sum((X[:,i]-Xavg[i])**2))
-
-    # Correlation
-    #Xcorr = np.zeros((M,M))
-    #for i in range(M):
-    #    for j in range(M):
-    #        Xcorr[i,j] = np.sum((X[:,i]-Xavg[i])*(X[:,j]-Xavg[j])) / (Xvar[i]*Xvar[j])
-
-    # Plot and save figure
-    #plt.imshow(Xcorr, cmap='hsv', interpolation='nearest')
-    #plt.yticks(np.arange(M), labels=connLogLabeled_DF.columns, fontsize=5)
-    #plt.xticks(np.arange(M), labels=connLogLabeled_DF.columns, rotation=90, fontsize=5)
-    #plt.colorbar()
-    #plt.show()
-    #plt.tight_layout()
-    #plt.savefig('correlation_matrix.png')
-
-
-
-    # # ----- Print some initial accuracy results using 80/20 train/test split -----
-    #X = connLogLabeled_DF.loc[:, connLogLabeled_DF.columns != 'binary_label'].values # X contains the following features: ts, id.orig_p, id.resp_p, orig_ip_bytes, id.orig_h, id.resp_h, proto
-    #y = connLogLabeled_DF.loc[:, connLogLabeled_DF.columns == 'binary_label'].values.ravel() # Y contains just the binary label
-    #X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=None) # use 80/20 test/train split
-    #train_test_accuracy(X_train, X_test, y_train, y_test)
-
-    # ----- Evaluate highest performing model using 80-20 split run 10 times and 10-fold cross validation -----
-    #print("--------------------------------")
-    #X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=None) # use 80/20 test/train split
-    #accuracies = []
-    #for i in range(10): # Run 10 times with 80/20 split and collect statistics
-    #   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=None)
-    #   accuracies += [rf_train_test(X_train, X_test, y_train, y_test)]
-    #print(f'80% train-test split accuracy using Random Forest is {np.mean(accuracies):.3f} {chr(177)}{np.std(accuracies):.4f}')
-
-    #accuracies = []
-    #kf = KFold(n_splits=10,shuffle=False,random_state=None) # Perform 10-fold cross validation
-    #for train_index, test_index in kf.split(X, y):
-    #   acc = rf_train_test(X[train_index], X[test_index], y[train_index], y[test_index])
-    #   accuracies += [acc]
-    #print(f'10-fold cross validation accuracy using Random Forest is {np.mean(accuracies):.3f} {chr(177)}{np.std(accuracies):.4f}')
 

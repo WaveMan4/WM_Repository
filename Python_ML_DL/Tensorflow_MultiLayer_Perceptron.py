@@ -1,3 +1,6 @@
+### Summary: Deep Learning - Custom Tensorflow MultiLayer Perceptron 
+### Author: Gilles Kepnang
+
 # ----- Importing libraries -----
 #import tensorflow as tf
 import tensorflow.compat.v1 as tf
@@ -58,16 +61,6 @@ def preprocess_df(df):
     df.drop(index_to_drop, inplace=True)
 
     df.drop(columns='is_duplicate', inplace=True) # Remove the duplicate marker column
-
-    # 2. Check for any missing values/NaNs in the data
-    # print("--------------------------------")
-    # print("Missing values in log (True indicates missing value): ")
-    # print(df.isnull().any())
-
-    # 3. Check type for each column
-    # print("--------------------------------")
-    # print("Data types in log: ")
-    # print(df.dtypes)
 
 def encode_onehot(_df, f):
     """
@@ -445,8 +438,6 @@ if __name__ == "__main__":
 
     #   Assign x and y_ placeholders
     x = tf.placeholder(tf.float32, [None, n_dimensions])
-    #W = tf.Variable(tf.zeros([n_dimensions, n_classes], tf.float32))
-    #b = tf.Variable(tf.zeros([n_classes], tf.float32))
     y_ = tf.placeholder(tf.float32, [None, n_classes])
 
 def multi_layer_perceptron(x, weights, biases):
@@ -467,10 +458,6 @@ def multi_layer_perceptron(x, weights, biases):
    return out_layer
 
  # 2) Assign weights
- #   W1 = tf.Variable(tf.random_uniform([n_input, n_hidden1], *, *))
- #   W2 = tf.Variable(tf.random_uniform([n_hidden1, n_hidden2], *, *))
- #   W3 = tf.Variable(tf.random_uniform([n_hidden2, n_hidden3], *, *))
- #   W4 = tf.Variable(tf.random_uniform([n_hidden3, n_output], *, *))
 weights = {
     'h1': tf.Variable(tf.truncated_normal([n_dimensions, n_hidden1])),
     'h2': tf.Variable(tf.truncated_normal([n_hidden1, n_hidden2])),
@@ -479,10 +466,6 @@ weights = {
 }
 
  # 3) Create Bias
-    #b1 = tf.Variable(tf.zeros([n_hidden1]), name="Bias1")
-    #b2 = tf.Variable(tf.zeros([n_hidden2]), name="Bias2"), Noe
-    #b3 = tf.Variable(tf.zeros([n_hidden3]), name="Bias3")
-    #out = tf.Variable(tf.zeros([n_output]), name="Out")
 biases = {
     'b1': tf.Variable(tf.truncated_normal([n_hidden1])),
     'b2': tf.Variable(tf.truncated_normal([n_hidden2])),

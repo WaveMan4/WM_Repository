@@ -1,3 +1,6 @@
+### Summary: Map Raw Traffic Data to Derived Traffic Data
+### Author: Gilles Kepnang
+
 # ----- Importing libraries -----
 import copy
 import csv
@@ -62,16 +65,6 @@ def preprocess_df(df):
 
     df.drop(columns='is_duplicate', inplace=True) # Remove the duplicate marker column
 
-    # 2. Check for any missing values/NaNs in the data
-    # print("--------------------------------")
-    # print("Missing values in log (True indicates missing value): ")
-    # print(df.isnull().any())
-
-    # 3. Check type for each column
-    # print("--------------------------------")
-    # print("Data types in log: ")
-    # print(df.dtypes)
-
 def encode_onehot(_df, f):
     """
     Summary: One-hot encodes the input categorical/nominal feature within the input dataframe.
@@ -132,16 +125,6 @@ if __name__ == "__main__":
     print('preprocessing derived_DS...')
     preprocess_df(derived_DS)
 
-    # ----- Output current datafrom to csv file (conn_log_dataframe.csv)
-    #connLogLabeled_DF.to_csv (r'C:\Users\Gilles\PycharmProjects\Capstone\conn_log_dataframe.csv', index = False, header=True)
-
-    #Next, add columns for the binary label, the packet spacing, and the interpacket-gap-time
-    #connLogLabeled_DF.insert(0, 'binary_label', True) # add new column to the end of the dataset for the binary label (True = malicious, False = benign)
-
-    #for index, row in connLogLabeled_DF.iterrows(): # iterate through dataset and populate binary label as malicious or benign
-    #    current_mclassLabel = row['tunnel_parents   label   detailed-label']
-    #    if ('Benign' in current_mclassLabel or 'benign' in current_mclassLabel):
-    #        connLogLabeled_DF.at[index, 'binary_label'] = False
 
     #################################################################################
     ##### Create new features from existing features and append to dataframe ########

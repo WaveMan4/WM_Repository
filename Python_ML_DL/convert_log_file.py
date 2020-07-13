@@ -1,3 +1,6 @@
+### Summary: Convert conn.log file to CSV file
+### Author: Gilles Kepnang
+
 import copy
 import csv
 import pandas as pd

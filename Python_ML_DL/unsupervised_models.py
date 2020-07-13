@@ -1,5 +1,4 @@
 ### Summary: Unsupervised Learning models
-### EN605.795.8VL.SP20
 ### Author: Gilles Kepnang
 
 # ----- Importing libraries -----
@@ -42,11 +41,8 @@ if __name__ == "__main__":
     kmeans.fit(X)
 
     y_kmeans = kmeans.predict(X)
-    #plt.scatter(X[:, 0], X[:, 1], c=y_kmeans, s=50, cmap='viridis')
-    #plt.show()
+
     centers = kmeans.cluster_centers_
-    #plt.scatter(centers[:, 0], centers[:, 1], c='black', s=200, alpha=0.5);
-    #plt.show()
 
     correct = 0
     incorrect = 0
@@ -61,17 +57,6 @@ if __name__ == "__main__":
             correct += 1
         else:
             incorrect += 1
-
-    #print()
-    #print("K-Means Clustering: ")
-    #print()
-    #print("%4d correct points out of %5d data points" %(correct, (len(X) * len(predict_me))))
-    #print("  percentage of correct: ")
-    #print("    ", correct/len(X))
-    #print()
-    #print("%4d incorrect points out of %5d data points" %(incorrect, (len(X) * len(predict_me))))
-    #print("  percentage of incorrect: ")
-    #print("    ", incorrect/len(X))
 
     pred_y = np.array(predictions)
 

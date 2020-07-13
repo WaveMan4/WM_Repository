@@ -106,10 +106,6 @@ def train_test_accuracy(_X_tr, _X_ts, _y_tr, _y_ts):
     print("Recall:", recall_score(_y_ts, y_pred))
     print("F1 score", f1_score(_y_ts, y_pred))
     print("Confusion Matrix:", confusion_matrix(y_test, y_pred))
-    #print("Precision:", precision_score(y_test, y_pred))
-    #print("Recall:", recall_score(y_test, y_pred))
-    #print("F1 score", f1_score(y_test, y_pred))
-    #print("Confusion Matrix:", confusion_matrix(y_test, y_pred))
 
     nb = GaussianNB() # Create a new Naive Bayes Classifier
     model = nb.fit(_X_tr, _y_tr) # Train NB classifier on training data
@@ -120,10 +116,6 @@ def train_test_accuracy(_X_tr, _X_ts, _y_tr, _y_ts):
     print("Recall:", recall_score(_y_ts, y_pred))
     print("F1 score", f1_score(_y_ts, y_pred))
     print("Confusion Matrix:", confusion_matrix(y_test, y_pred))
-    #print("Precision:", precision_score(y_test, y_pred))
-    #print("Recall:", recall_score(y_test, y_pred))
-    #print("F1 score", f1_score(y_test, y_pred))
-    #print("Confusion Matrix:", confusion_matrix(y_test, y_pred))
 
     dt = DecisionTreeClassifier() # Create a new Decision Tree Classifier
     model = dt.fit(_X_tr, _y_tr) # Train DT classifier on training data
@@ -134,10 +126,6 @@ def train_test_accuracy(_X_tr, _X_ts, _y_tr, _y_ts):
     print("Recall:", recall_score(_y_ts, y_pred))
     print("F1 score", f1_score(_y_ts, y_pred))
     print("Confusion Matrix:", confusion_matrix(_y_ts, y_pred))
-    #print("Precision:", precision_score(y_test, y_pred))
-    #print("Recall:", recall_score(y_test, y_pred))
-    #print("F1 score", f1_score(y_test, y_pred))
-    #print("Confusion Matrix:", confusion_matrix(y_test, y_pred))
 
     lr = LogisticRegression() # Create a new Logistic Regression Classifier
     model = lr.fit(_X_tr, _y_tr) # Train LR classifier on training data
@@ -148,10 +136,6 @@ def train_test_accuracy(_X_tr, _X_ts, _y_tr, _y_ts):
     print("Recall:", recall_score(_y_ts, y_pred))
     print("F1 score", f1_score(_y_ts, y_pred))
     print("Confusion Matrix:", confusion_matrix(_y_ts, y_pred))
-    #print("Precision:", precision_score(y_test, y_pred))
-    #print("Recall:", recall_score(y_test, y_pred))
-    #print("F1 score", f1_score(y_test, y_pred))
-    #print("Confusion Matrix:", confusion_matrix(y_test, y_pred))
 
     # Takes too long to run?
     # sv = svm.SVC(kernel='linear') # Create a new SVM Classifier with Linear kernel
@@ -173,10 +157,6 @@ def train_test_accuracy(_X_tr, _X_ts, _y_tr, _y_ts):
     print("Recall:", recall_score(_y_ts, y_pred))
     print("F1 score", f1_score(_y_ts, y_pred))
     print("Confusion Matrix:", confusion_matrix(_y_ts, y_pred))
-    #print("Precision:", precision_score(y_test, y_pred))
-    #print("Recall:", recall_score(y_test, y_pred))
-    #print("F1 score", f1_score(y_test, y_pred))
-    #print("Confusion Matrix:", confusion_matrix(y_test, y_pred))
 
     gbc = GradientBoostingClassifier(n_estimators=100, learning_rate=1.0, max_depth=1)
     gbc.fit(_X_tr, _y_tr)
@@ -187,10 +167,7 @@ def train_test_accuracy(_X_tr, _X_ts, _y_tr, _y_ts):
     print("Recall:", recall_score(_y_ts, y_pred))
     print("F1 score", f1_score(_y_ts, y_pred))
     print("Confusion Matrix:", confusion_matrix(_y_ts, y_pred))
-    #print("Precision:", precision_score(y_test, y_pred))
-    #print("Recall:", recall_score(y_test, y_pred))
-    #print("F1 score", f1_score(y_test, y_pred))
-    #print("Confusion Matrix:", confusion_matrix(y_test, y_pred))
+    
     # n_estimators: It controls the number of weak learners.
     # learning_rate:Controls the contribution of weak learners in the final combination. There is a trade-off between learning_rate and n_estimators.
     # max_depth: maximum depth of the individual regression estimators. The maximum depth limits the number of nodes in the tree. Tune this parameter for best performance; the best value depends on the interaction of the input variables

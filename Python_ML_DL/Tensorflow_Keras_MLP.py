@@ -1,4 +1,4 @@
-### Summary: Unsupervised Learning models
+### Summary: Deep Learning - Tensorflow Keras MLL
 ### EN605.795.8VL.SP20
 ### Author: Gilles Kepnang
 
