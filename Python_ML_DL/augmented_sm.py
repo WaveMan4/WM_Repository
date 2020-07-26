@@ -1,8 +1,6 @@
 ### Summary: Augmented Supervised-Learning Models
 ### Author: Gilles Kepnang
 
-### EN605.795.8VL.SP20
-
 # ----- Importing libraries -----
 import copy
 import csv
