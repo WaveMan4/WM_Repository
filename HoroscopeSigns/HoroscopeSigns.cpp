@@ -100,12 +100,12 @@ int main()
     
     cout << "\n\n";
 
-    string horoscope_fp = "C:\\Users\\Gilles\\source\\repos\\codemosaic\\HoroscopeSigns\\Ascii\\" + sign + ".txt";
+    string horoscope_fp = sign + ".txt";
     ifstream hfile(horoscope_fp);
     string line; 
 
-    cout << "Your sign is:\t" << sign << endl;
-    cout << "Traits are:\t" << sign_attributes[sign] << endl << endl;;
+    cout << "The Zodiac sign at this birthday is:\t" << sign << endl;
+    cout << "The traits of this zodiac sign are:\t" << sign_attributes[sign] << endl << endl;;
 
     if (hfile.is_open())
     {
