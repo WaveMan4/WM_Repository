@@ -1,4 +1,4 @@
-package kepnang.gilles.hw4;
+package kepnang.gilles.jewelmatcher;
 
 import android.content.Intent;
 import android.os.Bundle;
